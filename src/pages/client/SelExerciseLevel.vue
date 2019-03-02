@@ -40,7 +40,7 @@
         <div-flex-column class="list">
           <el-button type="primary" @click="clickToType1">A1、A3、B1</el-button>
           <el-button type="success" @click="clickToType2">B2、A2</el-button>
-          <el-button type="info" @click="clickToType3">C1、C2、C3</el-button>
+          <el-button type="primary" @click="clickToType3">C1、C2、C3</el-button>
           <el-button type="warning" @click="clickToType4">E、F、D</el-button>
         </div-flex-column>
       </el-dialog>

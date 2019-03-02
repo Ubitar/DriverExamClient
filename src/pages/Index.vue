@@ -136,7 +136,21 @@
             }
           })
         } else {
-        A
+          this.$Api.teaLogin(this, {
+            "account": this.account,
+            "password": this.password
+          }).then((res) => {
+            if (res.code == 200) {
+              localStorage.setItem("token", res.data.token);
+              localStorage.setItem("userInfo", JSON.stringify(res.data));
+              this.$router.replace("/manager/index/students?menu=1");
+            } else {
+              this.$message({
+                message: res.msg,
+                type: 'warning'
+              });
+            }
+          })
         }
       }
     },

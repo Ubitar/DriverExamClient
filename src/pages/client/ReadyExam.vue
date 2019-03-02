@@ -39,16 +39,16 @@
         <div-flex-column class="list">
           <el-button type="primary" :disabled="exams.a1_A3_B1_1_score>=90" @click="clickToType1">A1、A3、B1 科目一
           </el-button>
-          <el-button type="primary" :disabled="exams.a1_A3_B1_4_score>=90" @click="clickToType2">A1、A3、B1 科目四
+          <el-button type="primary" :disabled="exams.a1_A3_B1_1_score<90||exams.a1_A3_B1_4_score>=90" @click="clickToType2">A1、A3、B1 科目四
           </el-button>
           <el-button type="primary" :disabled="exams.b2_A2_1_score>=90" @click="clickToType3">B2、A2 科目一</el-button>
-          <el-button type="primary" :disabled="exams.b2_A2_4_score>=90" @click="clickToType4">B2、A2 科目四</el-button>
+          <el-button type="primary" :disabled="exams.b2_A2_1_score<90||exams.b2_A2_4_score>=90" @click="clickToType4">B2、A2 科目四</el-button>
           <el-button type="primary" :disabled="exams.c1_C2_C3_1_score>=90" @click="clickToType5">C1、C2、C3 科目一
           </el-button>
-          <el-button type="primary" :disabled="exams.c1_C2_C3_4_score>=90" @click="clickToType6">C1、C2、C3 科目四
+          <el-button type="primary" :disabled="exams.c1_C2_C3_1_score<90||exams.c1_C2_C3_4_score>=90" @click="clickToType6">C1、C2、C3 科目四
           </el-button>
           <el-button type="primary" :disabled="exams.e_F_D_1_score>=90" @click="clickToType7">E、F、D 科目一</el-button>
-          <el-button type="primary" :disabled="exams.e_F_D_4_score>=90" @click="clickToType8">E、F、D 科目四</el-button>
+          <el-button type="primary" :disabled="exams.e_F_D_1_score<90||exams.e_F_D_4_score>=90" @click="clickToType8">E、F、D 科目四</el-button>
         </div-flex-column>
       </el-dialog>
     </div-flex-column>

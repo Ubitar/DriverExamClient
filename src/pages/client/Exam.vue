@@ -166,6 +166,7 @@
                   this.submitTypes[this.index] = -1;
                   return;
                 }
+              this.submitTypes[this.index] = 1;
               this.$message({
                 message: '正确',
                 type: 'success'
@@ -225,7 +226,7 @@
               that.time = that.time - 1;
               if (that.time <= 0) {
                 clearInterval(that.timeInterval)
-                this.clickFinish();
+                that.clickFinish();
               }
             }, 1000)
             this.loadTo({
@@ -300,10 +301,10 @@
         else if (this.submitTypes[index] < 0) return 'question-error';
       }
     },
-    computed:{
-      finishWarning:function() {
-        for(var item of this.submitTypes){
-          if(item==0) {
+    computed: {
+      finishWarning: function () {
+        for (var item of this.submitTypes) {
+          if (item == 0) {
             return "还有题目未完成，是否提交成绩？"
           }
         }

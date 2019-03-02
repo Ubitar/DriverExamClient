@@ -124,7 +124,7 @@
               <div>模拟考试：C1、C2、C3 科目一</div>
               <div class="counts">
                 <span>100 题&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>{{exams.c1_C2_C3_1_score}}分</span>
+                <span>{{simulateExam.c1_C2_C3_1_score}}分</span>
               </div>
             </div-flex-column>
             <div-flex-column class="exercise order random">

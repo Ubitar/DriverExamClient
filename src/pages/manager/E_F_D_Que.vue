@@ -170,7 +170,7 @@
             this.$message({
               message: res.msg
             });
-            this.clickPage(this.curPage+1);
+            this.clickPage(this.curPage);
             this.showDelDialog=false;
           } else {
             this.$message({
