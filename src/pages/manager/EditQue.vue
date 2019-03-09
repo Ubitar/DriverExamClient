@@ -23,6 +23,7 @@
               <img v-if="question.questionPic" :src="question.questionPic" class="avatar">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
+            <el-button type="primary" style="margin-left: 10px" v-if="question.questionPic" @click="clickDelQuestionPic">删除图片</el-button>
           </div-flex-row>
           <div-flex-row class="item">
             <span>题目类型：</span>
@@ -96,7 +97,8 @@
           questionPic: "",
           type: 1,
           selects: [{selectIndex: "A"}, {selectIndex: "B"}, {selectIndex: "C"}, {selectIndex: "D"}],
-          analyses: []
+          analyses: [],
+          answer:""
         },
         uploadedAnswerPics: []
       }
@@ -114,6 +116,9 @@
         };
         console.log(this.question)
         this.submit(params);
+      },
+      clickDelQuestionPic: function () {
+        this.question.questionPic = "";
       },
       uploadQuestionPic: function (res, file) {
         if (res.code == 200) {
@@ -138,10 +143,7 @@
       },
       removeAnswerPic: function (file, fileList) {
         for (var index in this.question.analyses) {
-          if (file.response.data) {
-            if (file.response.data.indexOf(this.question.analyses[index].img) >= 0)
-              this.question.analyses.splice(index, 1);
-          } else if (file.url.indexOf(this.question.analyses[index].img) >= 0) {
+          if (file.url.indexOf(this.question.analyses[index].img) >= 0) {
             this.question.analyses.splice(index, 1);
           }
         }

@@ -10,16 +10,16 @@
         <div-flex-row>
           <span>搜索：</span>
           <el-input placeholder="根据用户名模糊搜索" v-model="searchUserName" size="small" class="input-search"/>
+        </div-flex-row>
+        <div-flex-row>
+          驾考类型：
           <radio-button-group v-model="searchExamLevel">
             <radio-button label="-1" size="mini">未通过</radio-button>
             <radio-button label="1" size="mini">科目一</radio-button>
             <radio-button label="3" size="mini">科目一过，科目四未过</radio-button>
             <radio-button label="4" size="mini">科目四</radio-button>
           </radio-button-group>
-        </div-flex-row>
-        <div-flex-row>
-          选择驾考类型：
-          <el-select v-model="searchType" placeholder="所有" size="small">
+          <el-select v-model="searchType" size="small" style="margin-left: 15px">
             <el-option
               v-for="item in types"
               :key="item.value"
@@ -27,6 +27,8 @@
               :value="item.value">
             </el-option>
           </el-select>
+        </div-flex-row>
+        <div-flex-row>
           <el-button type="primary" size="small" @click="clickSearch">搜 索</el-button>
           <el-button size="small" @click="clickClearInput">清 除</el-button>
         </div-flex-row>
@@ -108,9 +110,6 @@
         studentCount: 0,
         pageCount: 0,
         types: [{
-          label: "所有",
-          value: null
-        }, {
           label: "A1、A3、B1 类",
           value: "A1_A3_B1"
         }, {
@@ -167,8 +166,20 @@
       clickSearch: function () {
         var params = {};
         if (!StringUtils.isBlank(this.searchUserName)) params.name = this.searchUserName;
-        if (this.searchExamLevel) params.level = this.searchExamLevel;
-        if (this.searchType) params.type = this.searchType;
+        if (this.searchExamLevel && this.searchType) {
+          params.level = this.searchExamLevel;
+          params.type = this.searchType;
+        }else if(this.searchExamLevel) {
+          this.$message({
+            message: "请选择驾考类型",
+            type: 'warning'
+          });
+        }else if(this.searchType){
+          this.$message({
+            message: "请选择驾考科目类型",
+            type: 'warning'
+          });
+        }
         params.page = 0;
         this.search(params);
       },

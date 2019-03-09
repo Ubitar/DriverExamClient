@@ -102,7 +102,6 @@
 </template>
 
 <script>
-  import RegexUtil from '@/utils/RegexUtil.js'
   import ArrayUtil from '@/utils/ArrayUtil.js'
 
   export default {
@@ -159,7 +158,7 @@
               that.time = that.time - 1;
               if (that.time <= 0) {
                 clearInterval(that.timeInterval)
-                this.clickFinish();
+                that.clickFinish();
               }
             }, 1000)
           } else {
